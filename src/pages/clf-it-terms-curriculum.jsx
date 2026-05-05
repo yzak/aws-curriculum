@@ -679,15 +679,15 @@ function Quiz({ term, color, onClose }) {
             else if (showResult && isSelected && !isCorrect) { bg = "#fef2f2"; border = "#ef4444"; textColor = "#991b1b"; }
             return (
               <button key={i} onClick={() => !selected && setSelected(opt)}
-                style={{ padding: "12px 16px", borderRadius: 10, border: `2px solid ${border}`, background: bg, color: textColor, textAlign: "left", cursor: selected ? "default" : "pointer", fontFamily: "inherit", fontSize: 13, fontWeight: 600, transition: "all 0.2s" }}>
+                style={{ padding: "12px 16px", borderRadius: 10, border: `2px solid \${border}`, background: bg, color: textColor, textAlign: "left", cursor: selected ? "default" : "pointer", fontFamily: "inherit", fontSize: 13, fontWeight: 600, transition: "all 0.2s" }}>
                 {showResult && isCorrect ? "✅ " : showResult && isSelected && !isCorrect ? "❌ " : ""}{opt}
               </button>
             );
           })}
         </div>
         {selected && (
-          <div style={{ background: selected === correct ? "#f0fdf4" : "#fef2f2", border: `2px solid ${selected === correct ? "#22c55e" : "#ef4444"}`, borderRadius: 10, padding: "12px 14px", marginBottom: 16, fontSize: 13, color: selected === correct ? "#166534" : "#991b1b", fontWeight: 600 }}>
-            {selected === correct ? "🎉 正解！" : `😅 不正解。正解は「${correct}」です。`}
+          <div style={{ background: selected === correct ? "#f0fdf4" : "#fef2f2", border: `2px solid \${selected === correct ? "#22c55e" : "#ef4444"}`, borderRadius: 10, padding: "12px 14px", marginBottom: 16, fontSize: 13, color: selected === correct ? "#166534" : "#991b1b", fontWeight: 600 }}>
+            {selected === correct ? "🎉 正解！" : `😅 不正解。正解は「\${correct}」です。`}
           </div>
         )}
         <button onClick={onClose} style={{ width: "100%", padding: "11px", borderRadius: 10, border: "none", background: color, color: "white", fontFamily: "inherit", fontSize: 14, fontWeight: 700, cursor: "pointer" }}>
@@ -707,17 +707,17 @@ function TermCard({ term, color, light, border, dark, onQuiz, isLearned, onToggl
   const levelLabels = ["基礎", "標準", "応用"];
   return (
     <div style={{
-      border: `2px solid ${isLearned ? "#22c55e" : border}`,
+      border: `2px solid \${isLearned ? "#22c55e" : border}`,
       borderRadius: 14, background: isLearned ? "#f0fdf4" : "white",
       overflow: "hidden", transition: "all 0.3s",
-      boxShadow: expanded ? `0 8px 24px ${border}80` : "0 2px 8px rgba(0,0,0,0.06)",
+      boxShadow: expanded ? `0 8px 24px \${border}80` : "0 2px 8px rgba(0,0,0,0.06)",
     }}>
       {/* header */}
       <div style={{ padding: "14px 16px", cursor: "pointer", display: "flex", gap: 10, alignItems: "flex-start" }}
         onClick={() => setExpanded(!expanded)}>
         <div style={{ flex: 1 }}>
           <div style={{ display: "flex", gap: 6, alignItems: "center", marginBottom: 4, flexWrap: "wrap" }}>
-            <span style={{ fontSize: 10, padding: "2px 7px", borderRadius: 10, background: `${levelColors[term.level - 1]}20`, color: levelColors[term.level - 1], fontWeight: 700, border: `1px solid ${levelColors[term.level - 1]}40` }}>
+            <span style={{ fontSize: 10, padding: "2px 7px", borderRadius: 10, background: `\${levelColors[term.level - 1]}20`, color: levelColors[term.level - 1], fontWeight: 700, border: `1px solid \${levelColors[term.level - 1]}40` }}>
               {levelLabels[term.level - 1]}
             </span>
             <span style={{ fontSize: 10, color: "#94a3b8" }}>{term.eng}</span>
@@ -729,7 +729,7 @@ function TermCard({ term, color, light, border, dark, onQuiz, isLearned, onToggl
         <div style={{ display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end", flexShrink: 0 }}>
           <span style={{ fontSize: 16, transition: "transform 0.2s", transform: expanded ? "rotate(180deg)" : "none" }}>⌄</span>
           <button onClick={(e) => { e.stopPropagation(); onToggleLearn(); }}
-            style={{ fontSize: 10, padding: "3px 8px", borderRadius: 8, border: `1px solid ${isLearned ? "#22c55e" : "#e2e8f0"}`, background: isLearned ? "#f0fdf4" : "white", color: isLearned ? "#16a34a" : "#94a3b8", cursor: "pointer", fontWeight: 700 }}>
+            style={{ fontSize: 10, padding: "3px 8px", borderRadius: 8, border: `1px solid \${isLearned ? "#22c55e" : "#e2e8f0"}`, background: isLearned ? "#f0fdf4" : "white", color: isLearned ? "#16a34a" : "#94a3b8", cursor: "pointer", fontWeight: 700 }}>
             {isLearned ? "✓ 習得" : "未習得"}
           </button>
         </div>
@@ -737,7 +737,7 @@ function TermCard({ term, color, light, border, dark, onQuiz, isLearned, onToggl
 
       {/* detail */}
       {expanded && (
-        <div style={{ borderTop: `1px solid ${border}`, padding: "14px 16px", background: light }}>
+        <div style={{ borderTop: `1px solid \${border}`, padding: "14px 16px", background: light }}>
           <div style={{ marginBottom: 12 }}>
             <div style={{ fontSize: 11, fontWeight: 700, color: dark, marginBottom: 5, letterSpacing: 1 }}>📖 詳しい説明</div>
             <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.8 }}>{term.long}</div>
@@ -746,7 +746,7 @@ function TermCard({ term, color, light, border, dark, onQuiz, isLearned, onToggl
             <div style={{ fontSize: 10, fontWeight: 700, color: "#92400e", marginBottom: 3 }}>🌟 身近な例</div>
             <div style={{ fontSize: 12, color: "#78350f", lineHeight: 1.7 }}>{term.example}</div>
           </div>
-          <div style={{ background: `${light}`, border: `1px solid ${border}`, borderRadius: 8, padding: "10px 12px", marginBottom: 10 }}>
+          <div style={{ background: `\${light}`, border: `1px solid \${border}`, borderRadius: 8, padding: "10px 12px", marginBottom: 10 }}>
             <div style={{ fontSize: 10, fontWeight: 700, color: dark, marginBottom: 3 }}>☁️ AWSとの関連</div>
             <div style={{ fontSize: 12, color: "#374151", lineHeight: 1.7 }}>{term.aws}</div>
           </div>
@@ -756,11 +756,11 @@ function TermCard({ term, color, light, border, dark, onQuiz, isLearned, onToggl
           </div>
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={() => onQuiz(term)}
-              style={{ flex: 1, padding: "10px", borderRadius: 8, border: `2px solid ${color}`, background: color, color: "white", cursor: "pointer", fontFamily: "inherit", fontSize: 13, fontWeight: 700 }}>
+              style={{ flex: 1, padding: "10px", borderRadius: 8, border: `2px solid \${color}`, background: color, color: "white", cursor: "pointer", fontFamily: "inherit", fontSize: 13, fontWeight: 700 }}>
               ❓ クイズに挑戦
             </button>
             <button onClick={() => onToggleLearn()}
-              style={{ flex: 1, padding: "10px", borderRadius: 8, border: `2px solid ${isLearned ? "#22c55e" : "#e2e8f0"}`, background: isLearned ? "#22c55e" : "white", color: isLearned ? "white" : "#64748b", cursor: "pointer", fontFamily: "inherit", fontSize: 13, fontWeight: 700 }}>
+              style={{ flex: 1, padding: "10px", borderRadius: 8, border: `2px solid \${isLearned ? "#22c55e" : "#e2e8f0"}`, background: isLearned ? "#22c55e" : "white", color: isLearned ? "white" : "#64748b", cursor: "pointer", fontFamily: "inherit", fontSize: 13, fontWeight: 700 }}>
               {isLearned ? "✓ 習得済み" : "習得した！"}
             </button>
           </div>
@@ -784,7 +784,7 @@ export default function CLFTermsCurriculum() {
   const totalTerms = CATEGORIES.reduce((a, c) => a + c.terms.length, 0);
   const learnedCount = Object.keys(learned).length;
 
-  const termKey = (catId, word) => `${catId}:${word}`;
+  const termKey = (catId, word) => `\${catId}:\${word}`;
   const toggleLearn = (catId, word) => {
     const k = termKey(catId, word);
     setLearned(prev => { const n = { ...prev }; n[k] ? delete n[k] : (n[k] = true); return n; });
@@ -818,9 +818,9 @@ export default function CLFTermsCurriculum() {
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
             <div style={{
               width: 44, height: 44, borderRadius: 12,
-              background: `linear-gradient(135deg, ${cat.color}, ${cat.dark})`,
+              background: `linear-gradient(135deg, \${cat.color}, \${cat.dark})`,
               display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22,
-              boxShadow: `0 0 20px ${cat.color}60`,
+              boxShadow: `0 0 20px \${cat.color}60`,
               transition: "all 0.4s",
             }}>{cat.emoji}</div>
             <div>
@@ -831,7 +831,7 @@ export default function CLFTermsCurriculum() {
               <div style={{ fontSize: 10, color: "#64748b", marginBottom: 4 }}>総合習得率</div>
               <div style={{ fontSize: 22, fontWeight: 800, color: cat.color }}>{learnedCount}<span style={{ fontSize: 12, color: "#475569" }}>/{totalTerms}</span></div>
               <div style={{ width: 100, height: 4, background: "#1e293b", borderRadius: 4, marginTop: 4, overflow: "hidden" }}>
-                <div style={{ height: "100%", width: `${(learnedCount / totalTerms) * 100}%`, background: `linear-gradient(90deg, ${cat.color}, #a855f7)`, transition: "width 0.6s ease" }} />
+                <div style={{ height: "100%", width: `\${(learnedCount / totalTerms) * 100}%`, background: `linear-gradient(90deg, \${cat.color}, #a855f7)`, transition: "width 0.6s ease" }} />
               </div>
             </div>
           </div>
@@ -845,12 +845,12 @@ export default function CLFTermsCurriculum() {
                 <button key={i} onClick={() => { setActiveCat(i); setFilter("all"); setSearch(""); }}
                   style={{
                     padding: "6px 12px", borderRadius: 20, whiteSpace: "nowrap",
-                    border: `2px solid ${isActive ? c.color : "rgba(255,255,255,0.08)"}`,
-                    background: isActive ? `${c.color}22` : "transparent",
+                    border: `2px solid \${isActive ? c.color : "rgba(255,255,255,0.08)"}`,
+                    background: isActive ? `\${c.color}22` : "transparent",
                     color: isActive ? "white" : "rgba(255,255,255,0.35)",
                     cursor: "pointer", fontFamily: "inherit", fontSize: 11, fontWeight: 700,
                     transition: "all 0.2s",
-                    boxShadow: isActive ? `0 0 12px ${c.color}40` : "none",
+                    boxShadow: isActive ? `0 0 12px \${c.color}40` : "none",
                   }}>
                   {c.emoji} {c.title} <span style={{ opacity: 0.6, fontSize: 10 }}>{catDone}/{c.terms.length}</span>
                 </button>
@@ -863,8 +863,8 @@ export default function CLFTermsCurriculum() {
       <div style={{ maxWidth: 800, margin: "0 auto", padding: "16px 14px 40px" }}>
         {/* カテゴリ説明 */}
         <div style={{
-          background: `linear-gradient(135deg, ${cat.light}, white)`,
-          border: `2px solid ${cat.border}`,
+          background: `linear-gradient(135deg, \${cat.light}, white)`,
+          border: `2px solid \${cat.border}`,
           borderRadius: 14, padding: "14px 16px", marginBottom: 16,
           display: "flex", gap: 12, alignItems: "center",
         }}>
@@ -880,7 +880,7 @@ export default function CLFTermsCurriculum() {
             <div style={{
               width: 60, height: 4, background: "#e2e8f0", borderRadius: 4, marginTop: 4, overflow: "hidden",
             }}>
-              <div style={{ height: "100%", width: `${(catLearnedCount / cat.terms.length) * 100}%`, background: cat.color, transition: "width 0.5s" }} />
+              <div style={{ height: "100%", width: `\${(catLearnedCount / cat.terms.length) * 100}%`, background: cat.color, transition: "width 0.5s" }} />
             </div>
           </div>
         </div>
@@ -901,7 +901,7 @@ export default function CLFTermsCurriculum() {
             <button key={f} onClick={() => setFilter(f)}
               style={{
                 padding: "8px 14px", borderRadius: 10, fontFamily: "inherit", fontSize: 12, fontWeight: 700,
-                border: `2px solid ${filter === f ? cat.color : "#e2e8f0"}`,
+                border: `2px solid \${filter === f ? cat.color : "#e2e8f0"}`,
                 background: filter === f ? cat.light : "white",
                 color: filter === f ? cat.color : "#64748b",
                 cursor: "pointer", transition: "all 0.2s",
@@ -915,7 +915,7 @@ export default function CLFTermsCurriculum() {
         <div style={{ display: "flex", gap: 10, marginBottom: 14, flexWrap: "wrap" }}>
           {[["基礎", "#22c55e", "CLF必須"], ["標準", "#f59e0b", "CLFで頻出"], ["応用", "#ef4444", "理解で差がつく"]].map(([lv, col, desc]) => (
             <div key={lv} style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11 }}>
-              <span style={{ padding: "2px 7px", borderRadius: 10, background: `${col}20`, color: col, fontWeight: 700, border: `1px solid ${col}40` }}>{lv}</span>
+              <span style={{ padding: "2px 7px", borderRadius: 10, background: `\${col}20`, color: col, fontWeight: 700, border: `1px solid \${col}40` }}>{lv}</span>
               <span style={{ color: "#94a3b8" }}>{desc}</span>
             </div>
           ))}
@@ -930,7 +930,7 @@ export default function CLFTermsCurriculum() {
         ) : (
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {filteredTerms.map((term, i) => (
-              <div key={term.word} style={{ opacity: mounted ? 1 : 0, transform: mounted ? "none" : "translateY(10px)", transition: `all 0.3s ease ${i * 0.04}s` }}>
+              <div key={term.word} style={{ opacity: mounted ? 1 : 0, transform: mounted ? "none" : "translateY(10px)", transition: `all 0.3s ease \${i * 0.04}s` }}>
                 <TermCard
                   term={term}
                   color={cat.color}
@@ -949,8 +949,8 @@ export default function CLFTermsCurriculum() {
         {/* 全習得達成メッセージ */}
         {catLearnedCount === cat.terms.length && (
           <div style={{
-            marginTop: 20, background: `linear-gradient(135deg,${cat.light},#f0fdf4)`,
-            border: `2px solid ${cat.color}`, borderRadius: 16, padding: "20px",
+            marginTop: 20, background: `linear-gradient(135deg,\${cat.light},#f0fdf4)`,
+            border: `2px solid \${cat.color}`, borderRadius: 16, padding: "20px",
             textAlign: "center",
           }}>
             <div style={{ fontSize: 36, marginBottom: 8 }}>🎉</div>

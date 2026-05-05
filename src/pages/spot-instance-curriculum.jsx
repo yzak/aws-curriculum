@@ -539,7 +539,7 @@ export default function SpotCurriculum() {
     });
   };
 
-  const moduleKey = `${activePhase}-${activeModule}`;
+  const moduleKey = `\${activePhase}-\${activeModule}`;
 
   return (
     <div style={{
@@ -580,7 +580,7 @@ export default function SpotCurriculum() {
               overflow: "hidden",
             }}>
               <div style={{
-                width: `${(completedCount / totalModules) * 100}%`,
+                width: `\${(completedCount / totalModules) * 100}%`,
                 height: "100%",
                 background: "linear-gradient(90deg, #00D4FF, #7C4DFF)",
                 transition: "width 0.5s ease",
@@ -598,8 +598,8 @@ export default function SpotCurriculum() {
               style={{
                 padding: "6px 14px",
                 borderRadius: 20,
-                border: `1px solid ${activePhase === i ? p.color : "#1e3a5f"}`,
-                background: activePhase === i ? `${p.color}20` : "transparent",
+                border: `1px solid \${activePhase === i ? p.color : "#1e3a5f"}`,
+                background: activePhase === i ? `\${p.color}20` : "transparent",
                 color: activePhase === i ? p.color : "#4a6080",
                 fontSize: 11,
                 cursor: "pointer",
@@ -628,7 +628,7 @@ export default function SpotCurriculum() {
             MODULES — {phase.duration}
           </div>
           {phase.modules.map((m, i) => {
-            const key = `${activePhase}-${i}`;
+            const key = `\${activePhase}-\${i}`;
             const isActive = i === activeModule;
             const isDone = completed.has(key);
             const tc = typeColors[m.type];
@@ -642,8 +642,8 @@ export default function SpotCurriculum() {
                   padding: "12px",
                   marginBottom: 6,
                   borderRadius: 8,
-                  border: `1px solid ${isActive ? phase.color : "#1a2535"}`,
-                  background: isActive ? `${phase.color}12` : "transparent",
+                  border: `1px solid \${isActive ? phase.color : "#1a2535"}`,
+                  background: isActive ? `\${phase.color}12` : "transparent",
                   cursor: "pointer",
                   fontFamily: "inherit",
                   transition: "all 0.2s",
@@ -654,7 +654,7 @@ export default function SpotCurriculum() {
                     fontSize: 9,
                     padding: "2px 6px",
                     borderRadius: 4,
-                    border: `1px solid ${tc.border}`,
+                    border: `1px solid \${tc.border}`,
                     color: tc.text,
                     background: tc.bg,
                   }}>
@@ -686,7 +686,7 @@ export default function SpotCurriculum() {
                   fontSize: 10,
                   padding: "3px 10px",
                   borderRadius: 20,
-                  border: `1px solid ${typeColors[module.type].border}`,
+                  border: `1px solid \${typeColors[module.type].border}`,
                   color: typeColors[module.type].text,
                   background: typeColors[module.type].bg,
                 }}>
@@ -703,7 +703,7 @@ export default function SpotCurriculum() {
               style={{
                 padding: "8px 16px",
                 borderRadius: 8,
-                border: `1px solid ${completed.has(moduleKey) ? "#00BFA5" : "#1e3a5f"}`,
+                border: `1px solid \${completed.has(moduleKey) ? "#00BFA5" : "#1e3a5f"}`,
                 background: completed.has(moduleKey) ? "#00BFA520" : "transparent",
                 color: completed.has(moduleKey) ? "#00BFA5" : "#3a5070",
                 cursor: "pointer",
@@ -742,8 +742,8 @@ export default function SpotCurriculum() {
 
           {/* Tip */}
           <div style={{
-            background: `${phase.color}10`,
-            border: `1px solid ${phase.color}40`,
+            background: `\${phase.color}10`,
+            border: `1px solid \${phase.color}40`,
             borderRadius: 8,
             padding: "14px 16px",
             marginBottom: 16,
@@ -841,8 +841,8 @@ export default function SpotCurriculum() {
               style={{
                 padding: "10px 20px",
                 borderRadius: 8,
-                border: `1px solid ${phase.color}`,
-                background: `${phase.color}15`,
+                border: `1px solid \${phase.color}`,
+                background: `\${phase.color}15`,
                 color: phase.color,
                 cursor: "pointer",
                 fontSize: 12,

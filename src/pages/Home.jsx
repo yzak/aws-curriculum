@@ -106,7 +106,7 @@ export default function Home() {
           { w: 400, h: 400, bottom: -200, right: '20%', color: '#0e7490' + '15' },
         ].map((c, i) => (
           <div key={i} style={{
-            position: 'absolute', borderRadius: '50%', border: `1px solid ${c.color}`,
+            position: 'absolute', borderRadius: '50%', border: `1px solid \${c.color}`,
             width: c.w, height: c.h, top: c.top, left: c.left, right: c.right, bottom: c.bottom,
             opacity: 0.3, pointerEvents: 'none',
           }} />
@@ -167,9 +167,9 @@ export default function Home() {
                 position: 'relative', overflow: 'hidden',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.border = `1px solid ${c.color}`
+                e.currentTarget.style.border = `1px solid \${c.color}`
                 e.currentTarget.style.transform = 'translateY(-3px)'
-                e.currentTarget.style.boxShadow = `0 12px 32px ${c.color}30`
+                e.currentTarget.style.boxShadow = `0 12px 32px \${c.color}30`
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.border = '1px solid #1e3a5f'
@@ -180,14 +180,14 @@ export default function Home() {
               {/* glow bg */}
               <div style={{
                 position: 'absolute', top: -40, right: -40, width: 120, height: 120,
-                borderRadius: '50%', background: `${c.color}12`, pointerEvents: 'none',
+                borderRadius: '50%', background: `\${c.color}12`, pointerEvents: 'none',
               }} />
 
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 14 }}>
                 <span style={{
                   fontSize: 10, padding: '3px 10px', borderRadius: 20,
-                  background: `${c.badgeColor}20`, color: c.badgeColor,
-                  border: `1px solid ${c.badgeColor}40`, fontWeight: 800, letterSpacing: 1,
+                  background: `\${c.badgeColor}20`, color: c.badgeColor,
+                  border: `1px solid \${c.badgeColor}40`, fontWeight: 800, letterSpacing: 1,
                 }}>{c.badge}</span>
                 <span style={{ fontSize: 28 }}>{c.emoji}</span>
               </div>
@@ -200,8 +200,8 @@ export default function Home() {
                 {c.tags.slice(0, 4).map(t => (
                   <span key={t} style={{
                     fontSize: 9, padding: '2px 7px', borderRadius: 6,
-                    background: `${c.color}12`, color: c.color,
-                    border: `1px solid ${c.color}30`, fontWeight: 600,
+                    background: `\${c.color}12`, color: c.color,
+                    border: `1px solid \${c.color}30`, fontWeight: 600,
                   }}>{t}</span>
                 ))}
                 {c.tags.length > 4 && <span style={{ fontSize: 9, color: '#334866' }}>+{c.tags.length - 4}</span>}
@@ -215,7 +215,7 @@ export default function Home() {
                 <div style={{
                   fontSize: 11, fontWeight: 700, color: c.color,
                   padding: '6px 14px', borderRadius: 8,
-                  background: `${c.color}15`, border: `1px solid ${c.color}30`,
+                  background: `\${c.color}15`, border: `1px solid \${c.color}30`,
                 }}>
                   開始する →
                 </div>
@@ -234,12 +234,12 @@ export default function Home() {
                   onClick={() => navigate(c.path)}
                   style={{
                     padding: '8px 14px', borderRadius: 10, cursor: 'pointer',
-                    background: `${c.color}15`, border: `1px solid ${c.color}40`,
+                    background: `\${c.color}15`, border: `1px solid \${c.color}40`,
                     color: c.color, fontSize: 12, fontWeight: 700,
                     transition: 'all 0.2s',
                   }}
-                  onMouseEnter={e => e.currentTarget.style.background = `${c.color}30`}
-                  onMouseLeave={e => e.currentTarget.style.background = `${c.color}15`}
+                  onMouseEnter={e => e.currentTarget.style.background = `\${c.color}30`}
+                  onMouseLeave={e => e.currentTarget.style.background = `\${c.color}15`}
                 >
                   {c.emoji} {c.badge}
                 </div>

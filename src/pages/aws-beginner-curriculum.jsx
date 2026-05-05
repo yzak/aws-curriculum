@@ -35,7 +35,7 @@ function ArchDiagram({ currentStep }) {
       <div style={{ textAlign: "center", marginBottom: 4 }}>
         <div style={{
           display: "inline-block", padding: "5px 14px",
-          background: bg(1), border: `2px solid ${border(1)}`,
+          background: bg(1), border: `2px solid \${border(1)}`,
           borderRadius: 10, fontSize: 11, color: col(1), fontWeight: 700,
           transition: "all 0.4s",
         }}>
@@ -46,7 +46,7 @@ function ArchDiagram({ currentStep }) {
 
       {/* VPC outer */}
       <div style={{
-        border: `2px dashed ${done(0) ? "#22c55e" : active(0) ? "#f97316" : "#cbd5e1"}`,
+        border: `2px dashed \${done(0) ? "#22c55e" : active(0) ? "#f97316" : "#cbd5e1"}`,
         borderRadius: 14, padding: "10px 10px 14px",
         background: done(0) ? "#f0fdf4" : active(0) ? "#fff7ed" : "#f8fafc",
         transition: "all 0.4s",
@@ -58,7 +58,7 @@ function ArchDiagram({ currentStep }) {
 
         {/* Subnet */}
         <div style={{
-          border: `2px solid ${done(2) ? "#22c55e" : active(2) ? "#f97316" : "#e2e8f0"}`,
+          border: `2px solid \${done(2) ? "#22c55e" : active(2) ? "#f97316" : "#e2e8f0"}`,
           borderRadius: 10, padding: "8px 10px",
           background: done(2) ? "#f0fdf4" : active(2) ? "#fff7ed" : "#fff",
           transition: "all 0.4s",
@@ -70,7 +70,7 @@ function ArchDiagram({ currentStep }) {
           <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
             {/* SG */}
             <div style={{
-              border: `2px solid ${done(3) ? "#22c55e" : active(3) ? "#f97316" : "#e2e8f0"}`,
+              border: `2px solid \${done(3) ? "#22c55e" : active(3) ? "#f97316" : "#e2e8f0"}`,
               borderRadius: 8, padding: "6px 10px",
               background: done(3) ? "#f0fdf4" : active(3) ? "#fff7ed" : "#f8fafc",
               fontSize: 10, fontWeight: 700,
@@ -84,7 +84,7 @@ function ArchDiagram({ currentStep }) {
 
             {/* EC2 */}
             <div style={{
-              border: `2px solid ${done(4) ? "#22c55e" : active(4) ? "#f97316" : "#e2e8f0"}`,
+              border: `2px solid \${done(4) ? "#22c55e" : active(4) ? "#f97316" : "#e2e8f0"}`,
               borderRadius: 8, padding: "6px 10px",
               background: done(4) ? "#f0fdf4" : active(4) ? "#fff7ed" : "#f8fafc",
               fontSize: 10, fontWeight: 700,
@@ -98,7 +98,7 @@ function ArchDiagram({ currentStep }) {
 
             {/* nginx */}
             <div style={{
-              border: `2px solid ${done(5) ? "#22c55e" : active(5) ? "#f97316" : "#e2e8f0"}`,
+              border: `2px solid \${done(5) ? "#22c55e" : active(5) ? "#f97316" : "#e2e8f0"}`,
               borderRadius: 8, padding: "6px 10px",
               background: done(5) ? "#f0fdf4" : active(5) ? "#fff7ed" : "#f8fafc",
               fontSize: 10, fontWeight: 700,
@@ -114,7 +114,7 @@ function ArchDiagram({ currentStep }) {
 
         {/* Route Table */}
         <div style={{
-          border: `2px solid ${done(2) ? "#22c55e" : active(2) ? "#f97316" : "#e2e8f0"}`,
+          border: `2px solid \${done(2) ? "#22c55e" : active(2) ? "#f97316" : "#e2e8f0"}`,
           borderRadius: 8, padding: "5px 10px",
           background: done(2) ? "#f0fdf4" : "#fff",
           marginTop: 8, fontSize: 10, color: "#64748b", textAlign: "center",
@@ -580,7 +580,7 @@ export default function BeginnerCurriculum() {
                 style={{
                   width: "100%", textAlign: "left",
                   padding: "10px 12px", marginBottom: 6, borderRadius: 10,
-                  border: `2px solid ${i === currentStep ? s.color : completed.has(i) ? "#22c55e" : "#e2e8f0"}`,
+                  border: `2px solid \${i === currentStep ? s.color : completed.has(i) ? "#22c55e" : "#e2e8f0"}`,
                   background: i === currentStep ? s.lightColor : completed.has(i) ? "#f0fdf4" : "white",
                   cursor: "pointer", fontFamily: "inherit",
                   transition: "all 0.2s",
@@ -624,16 +624,16 @@ export default function BeginnerCurriculum() {
             {/* step card */}
             <div style={{
               background: "white",
-              border: `2px solid ${step.borderColor}`,
+              border: `2px solid \${step.borderColor}`,
               borderRadius: 16,
               overflow: "hidden",
-              boxShadow: `0 4px 20px ${step.borderColor}50`,
+              boxShadow: `0 4px 20px \${step.borderColor}50`,
             }}>
               {/* card header */}
               <div style={{
                 background: step.lightColor,
                 padding: "16px 20px",
-                borderBottom: `2px solid ${step.borderColor}`,
+                borderBottom: `2px solid \${step.borderColor}`,
                 display: "flex", alignItems: "center", gap: 12,
               }}>
                 <div style={{
@@ -662,7 +662,7 @@ export default function BeginnerCurriculum() {
                 <div style={{
                   background: step.lightColor, borderRadius: 10,
                   padding: "14px 16px", marginBottom: 16,
-                  borderLeft: `4px solid ${step.color}`,
+                  borderLeft: `4px solid \${step.color}`,
                 }}>
                   <div style={{ fontSize: 11, fontWeight: 700, color: step.color, marginBottom: 6, letterSpacing: 1 }}>
                     📖 このステップでやること
@@ -776,10 +776,10 @@ export default function BeginnerCurriculum() {
                       border: "none",
                       background: isCompleted
                         ? "linear-gradient(135deg,#22c55e,#16a34a)"
-                        : `linear-gradient(135deg,${step.color},${step.color}cc)`,
+                        : `linear-gradient(135deg,\${step.color},\${step.color}cc)`,
                       color: "white", cursor: "pointer",
                       fontFamily: "inherit", fontSize: 14, fontWeight: 800,
-                      boxShadow: `0 4px 14px ${step.color}50`,
+                      boxShadow: `0 4px 14px \${step.color}50`,
                       transition: "all 0.2s",
                     }}
                   >

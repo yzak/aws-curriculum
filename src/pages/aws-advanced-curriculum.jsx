@@ -53,8 +53,8 @@ function CodeBlock({ code }) {
 
 function StepCard({ step, color, lightColor, borderColor, emoji, stepNum, totalSteps, isCompleted, onComplete, onPrev, showPrev, isLast }) {
   return (
-    <div style={{ background: "white", border: `2px solid ${borderColor}`, borderRadius: 16, overflow: "hidden", boxShadow: `0 4px 24px ${borderColor}60` }}>
-      <div style={{ background: lightColor, padding: "16px 20px", borderBottom: `2px solid ${borderColor}`, display: "flex", alignItems: "center", gap: 12 }}>
+    <div style={{ background: "white", border: `2px solid \${borderColor}`, borderRadius: 16, overflow: "hidden", boxShadow: `0 4px 24px \${borderColor}60` }}>
+      <div style={{ background: lightColor, padding: "16px 20px", borderBottom: `2px solid \${borderColor}`, display: "flex", alignItems: "center", gap: 12 }}>
         <div style={{ width: 48, height: 48, borderRadius: 12, background: color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, flexShrink: 0 }}>{emoji}</div>
         <div style={{ flex: 1 }}>
           <div style={{ fontSize: 11, color: color, fontWeight: 700, letterSpacing: 1 }}>STEP {stepNum} / {totalSteps} ⏱ {step.duration}</div>
@@ -65,7 +65,7 @@ function StepCard({ step, color, lightColor, borderColor, emoji, stepNum, totalS
 
       <div style={{ padding: "20px" }}>
         {/* what */}
-        <div style={{ background: lightColor, borderRadius: 10, padding: "13px 15px", marginBottom: 14, borderLeft: `4px solid ${color}` }}>
+        <div style={{ background: lightColor, borderRadius: 10, padding: "13px 15px", marginBottom: 14, borderLeft: `4px solid \${color}` }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: color, marginBottom: 5, letterSpacing: 1 }}>📖 このステップでやること</div>
           <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.7 }}>{step.what}</div>
         </div>
@@ -119,9 +119,9 @@ function StepCard({ step, color, lightColor, borderColor, emoji, stepNum, totalS
           )}
           <button onClick={onComplete} style={{
             flex: 1, padding: "11px 18px", borderRadius: 10, border: "none",
-            background: isCompleted ? "linear-gradient(135deg,#22c55e,#16a34a)" : `linear-gradient(135deg,${color},${color}cc)`,
+            background: isCompleted ? "linear-gradient(135deg,#22c55e,#16a34a)" : `linear-gradient(135deg,\${color},\${color}cc)`,
             color: "white", cursor: "pointer", fontFamily: "inherit", fontSize: 14, fontWeight: 800,
-            boxShadow: `0 4px 14px ${color}50`,
+            boxShadow: `0 4px 14px \${color}50`,
           }}>
             {isLast ? (isCompleted ? "🎉 完了！" : "✅ 完了！") : (isCompleted ? "次のステップへ →" : "✅ 完了して次へ →")}
           </button>
@@ -154,7 +154,7 @@ function ArchS3({ step }) {
             [3, "🔒 バケットポリシーで公開"],
             [4, "📊 バージョニング＆ライフサイクル"],
           ].map(([s, label]) => (
-            <div key={s} style={{ padding: "6px 12px", borderRadius: 8, border: `2px solid ${bc(s)}`, background: bg(s), color: tc(s), fontSize: 11, fontWeight: 700, transition: "all 0.3s", textAlign: "center" }}>
+            <div key={s} style={{ padding: "6px 12px", borderRadius: 8, border: `2px solid \${bc(s)}`, background: bg(s), color: tc(s), fontSize: 11, fontWeight: 700, transition: "all 0.3s", textAlign: "center" }}>
               {ic(s)} {label}
             </div>
           ))}
@@ -181,7 +181,7 @@ function ArchIAM({ step }) {
           [3, "🎭 EC2用IAMロール作成"],
           [4, "🔍 権限の確認とテスト"],
         ].map(([s, label]) => (
-          <div key={s} style={{ padding: "6px 12px", borderRadius: 8, border: `2px solid ${bc(s)}`, background: bg(s), color: tc(s), fontSize: 11, fontWeight: 700, transition: "all 0.3s" }}>
+          <div key={s} style={{ padding: "6px 12px", borderRadius: 8, border: `2px solid \${bc(s)}`, background: bg(s), color: tc(s), fontSize: 11, fontWeight: 700, transition: "all 0.3s" }}>
             {ic(s)} {label}
           </div>
         ))}
@@ -211,7 +211,7 @@ function ArchECS({ step }) {
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
         <div style={{ padding: "5px 14px", background: "#e0f2fe", border: "2px solid #7dd3fc", borderRadius: 20, fontSize: 11, color: "#0369a1", fontWeight: 700 }}>🌐 インターネット</div>
         <div style={{ fontSize: 14, color: "#94a3b8" }}>↓</div>
-        <div style={{ padding: "5px 14px", border: `2px solid ${bc(3)}`, background: bg(3), borderRadius: 8, fontSize: 11, color: tc(3), fontWeight: 700, transition: "all 0.3s" }}>{ic(3)} ALB (Application Load Balancer)</div>
+        <div style={{ padding: "5px 14px", border: `2px solid \${bc(3)}`, background: bg(3), borderRadius: 8, fontSize: 11, color: tc(3), fontWeight: 700, transition: "all 0.3s" }}>{ic(3)} ALB (Application Load Balancer)</div>
         <div style={{ fontSize: 14, color: "#94a3b8" }}>↓</div>
         <div style={{ border: "2px dashed #86efac", borderRadius: 12, padding: "10px 20px", background: "#f0fdf4", textAlign: "center" }}>
           <div style={{ fontSize: 10, color: "#15803d", fontWeight: 700, marginBottom: 6 }}>ECS Cluster</div>
@@ -221,14 +221,14 @@ function ArchECS({ step }) {
               [1, "タスク\n定義"],
               [2, "ECS\nサービス"],
             ].map(([s, label]) => (
-              <div key={s} style={{ padding: "5px 10px", border: `2px solid ${bc(s)}`, background: bg(s), borderRadius: 7, fontSize: 10, color: tc(s), fontWeight: 700, transition: "all 0.3s", textAlign: "center", whiteSpace: "pre" }}>
+              <div key={s} style={{ padding: "5px 10px", border: `2px solid \${bc(s)}`, background: bg(s), borderRadius: 7, fontSize: 10, color: tc(s), fontWeight: 700, transition: "all 0.3s", textAlign: "center", whiteSpace: "pre" }}>
                 {ic(s)} {label}
               </div>
             ))}
           </div>
           <div style={{ fontSize: 10, color: "#94a3b8", marginTop: 6 }}>↑ Fargateが自動でサーバー管理</div>
         </div>
-        <div style={{ padding: "5px 14px", border: `2px solid ${bc(4)}`, background: bg(4), borderRadius: 8, fontSize: 11, color: tc(4), fontWeight: 700, transition: "all 0.3s" }}>{ic(4)} CloudWatch Logs（ログ確認）</div>
+        <div style={{ padding: "5px 14px", border: `2px solid \${bc(4)}`, background: bg(4), borderRadius: 8, fontSize: 11, color: tc(4), fontWeight: 700, transition: "all 0.3s" }}>{ic(4)} CloudWatch Logs（ログ確認）</div>
       </div>
     </div>
   );
@@ -246,22 +246,22 @@ function ArchCF({ step }) {
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
         <div style={{ padding: "5px 14px", background: "#e0f2fe", border: "2px solid #7dd3fc", borderRadius: 20, fontSize: 11, color: "#0369a1", fontWeight: 700 }}>🌐 ユーザー（世界中）</div>
         <div style={{ fontSize: 14, color: "#94a3b8" }}>↓</div>
-        <div style={{ padding: "6px 16px", border: `2px solid ${bc(1)}`, background: bg(1), borderRadius: 10, fontSize: 11, color: tc(1), fontWeight: 700, transition: "all 0.3s" }}>{ic(1)} CloudFront ディストリビューション（CDN・HTTPS）</div>
+        <div style={{ padding: "6px 16px", border: `2px solid \${bc(1)}`, background: bg(1), borderRadius: 10, fontSize: 11, color: tc(1), fontWeight: 700, transition: "all 0.3s" }}>{ic(1)} CloudFront ディストリビューション（CDN・HTTPS）</div>
         <div style={{ display: "flex", gap: 20, alignItems: "center", marginTop: 4 }}>
           <div style={{ fontSize: 14, color: "#94a3b8", textAlign: "center" }}>↓<br /><span style={{ fontSize: 9 }}>静的コンテンツ</span></div>
           <div style={{ fontSize: 14, color: "#94a3b8", textAlign: "center" }}>↓<br /><span style={{ fontSize: 9 }}>動的API</span></div>
         </div>
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
-          <div style={{ padding: "8px 12px", border: `2px solid ${bc(0)}`, background: bg(0), borderRadius: 8, fontSize: 10, color: tc(0), fontWeight: 700, transition: "all 0.3s", textAlign: "center" }}>
+          <div style={{ padding: "8px 12px", border: `2px solid \${bc(0)}`, background: bg(0), borderRadius: 8, fontSize: 10, color: tc(0), fontWeight: 700, transition: "all 0.3s", textAlign: "center" }}>
             {ic(0)} 🪣 S3バケット<br /><span style={{ fontWeight: 400 }}>静的ファイル配信</span>
           </div>
-          <div style={{ padding: "8px 12px", border: `2px solid ${bc(2)}`, background: bg(2), borderRadius: 8, fontSize: 10, color: tc(2), fontWeight: 700, transition: "all 0.3s", textAlign: "center" }}>
+          <div style={{ padding: "8px 12px", border: `2px solid \${bc(2)}`, background: bg(2), borderRadius: 8, fontSize: 10, color: tc(2), fontWeight: 700, transition: "all 0.3s", textAlign: "center" }}>
             {ic(2)} ⚖️ ALB<br /><span style={{ fontWeight: 400 }}>動的コンテンツ</span>
           </div>
         </div>
         <div style={{ display: "flex", gap: 8, marginTop: 4, flexWrap: "wrap", justifyContent: "center" }}>
           {[[3, "🔒 ACM証明書(HTTPS)"], [4, "🌐 Route 53(独自ドメイン)"]].map(([s, label]) => (
-            <div key={s} style={{ padding: "5px 10px", border: `2px solid ${bc(s)}`, background: bg(s), borderRadius: 7, fontSize: 10, color: tc(s), fontWeight: 700, transition: "all 0.3s" }}>{ic(s)} {label}</div>
+            <div key={s} style={{ padding: "5px 10px", border: `2px solid \${bc(s)}`, background: bg(s), borderRadius: 7, fontSize: 10, color: tc(s), fontWeight: 700, transition: "all 0.3s" }}>{ic(s)} {label}</div>
           ))}
         </div>
       </div>
@@ -381,7 +381,7 @@ aws s3api put-bucket-website \\
 aws s3api get-bucket-website --bucket $BUCKET_NAME
 
 # ウェブサイトエンドポイントを取得
-echo "URL: http://${BUCKET_NAME}.s3-website-ap-northeast-1.amazonaws.com"`,
+echo "URL: http://\${BUCKET_NAME}.s3-website-ap-northeast-1.amazonaws.com"`,
         check: "プロパティ画面にウェブサイトエンドポイントURLが表示されていますか？（まだアクセスするとエラーが出ますが次のステップで解決します）",
         point: "S3の静的ホスティングはHTTPSに非対応です。HTTPSを使いたい場合はCloudFrontを前段に置きます（CloudFrontのハンズオンで実践します）。",
       },
@@ -419,7 +419,7 @@ cat > bucket-policy.json << EOF
       "Effect": "Allow",
       "Principal": "*",
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::${BUCKET_NAME}/*"
+      "Resource": "arn:aws:s3:::\${BUCKET_NAME}/*"
     }
   ]
 }
@@ -430,7 +430,7 @@ aws s3api put-bucket-policy \\
   --policy file://bucket-policy.json
 
 # 動作確認
-curl http://${BUCKET_NAME}.s3-website-ap-northeast-1.amazonaws.com`,
+curl http://\${BUCKET_NAME}.s3-website-ap-northeast-1.amazonaws.com`,
         check: "ブラウザでウェブサイトエンドポイントにアクセスして「Hello from S3!」や「Hello World!」が表示されましたか？🎉",
         point: "本番環境でS3を公開する際は、CloudFront + OAC（Origin Access Control）を使ってS3を非公開にしたままCloudFront経由でのみ配信するパターンが推奨です。",
       },
@@ -812,7 +812,7 @@ EOF
 # ECRにログイン（リージョンとアカウントIDを設定）
 AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 REGION="ap-northeast-1"
-ECR_URI="${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com"
+ECR_URI="\${AWS_ACCOUNT_ID}.dkr.ecr.\${REGION}.amazonaws.com"
 
 aws ecr get-login-password --region $REGION | \\
   docker login --username AWS --password-stdin $ECR_URI
@@ -888,17 +888,17 @@ cat > task-definition.json << EOF
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "256",
   "memory": "512",
-  "executionRoleArn": "${EXECUTION_ROLE_ARN}",
+  "executionRoleArn": "\${EXECUTION_ROLE_ARN}",
   "containerDefinitions": [{
     "name": "hello-world",
-    "image": "${ECR_URI}/my-hello-world:latest",
+    "image": "\${ECR_URI}/my-hello-world:latest",
     "portMappings": [{"containerPort": 80, "protocol": "tcp"}],
     "essential": true,
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
         "awslogs-group": "/ecs/hello-world-task",
-        "awslogs-region": "${REGION}",
+        "awslogs-region": "\${REGION}",
         "awslogs-stream-prefix": "ecs"
       }
     }
@@ -1201,10 +1201,10 @@ cat > cf-bucket-policy.json << EOF
     "Effect": "Allow",
     "Principal": {"Service": "cloudfront.amazonaws.com"},
     "Action": "s3:GetObject",
-    "Resource": "arn:aws:s3:::${CF_BUCKET}/*",
+    "Resource": "arn:aws:s3:::\${CF_BUCKET}/*",
     "Condition": {
       "StringEquals": {
-        "AWS:SourceArn": "arn:aws:cloudfront::${ACCOUNT_ID}:distribution/${DIST_ID}"
+        "AWS:SourceArn": "arn:aws:cloudfront::\${ACCOUNT_ID}:distribution/\${DIST_ID}"
       }
     }
   }]
@@ -1400,7 +1400,7 @@ export default function AdvancedCurriculum() {
 
   const course = COURSES[activeCourse];
   const step = course.steps[activeStep];
-  const courseKey = (ci, si) => `${ci}-${si}`;
+  const courseKey = (ci, si) => `\${ci}-\${si}`;
   const isDone = (ci, si) => !!completed[courseKey(ci, si)];
   const totalDone = Object.keys(completed).length;
   const totalSteps = COURSES.reduce((a, c) => a + c.steps.length, 0);
@@ -1428,7 +1428,7 @@ export default function AdvancedCurriculum() {
             <div style={{ marginLeft: "auto", textAlign: "right" }}>
               <div style={{ fontSize: 11, color: "#93c5fd" }}>総合進捗 {totalDone}/{totalSteps}</div>
               <div style={{ width: 140, height: 5, background: "rgba(255,255,255,0.1)", borderRadius: 4, marginTop: 5, overflow: "hidden" }}>
-                <div style={{ height: "100%", width: `${(totalDone / totalSteps) * 100}%`, background: "linear-gradient(90deg,#f97316,#a855f7)", transition: "width 0.5s" }} />
+                <div style={{ height: "100%", width: `\${(totalDone / totalSteps) * 100}%`, background: "linear-gradient(90deg,#f97316,#a855f7)", transition: "width 0.5s" }} />
               </div>
             </div>
           </div>
@@ -1441,11 +1441,11 @@ export default function AdvancedCurriculum() {
                 <button key={i} onClick={() => { setActiveCourse(i); setActiveStep(0); }}
                   style={{
                     padding: "8px 14px", borderRadius: 10, whiteSpace: "nowrap",
-                    border: `2px solid ${activeCourse === i ? c.color : "rgba(255,255,255,0.1)"}`,
-                    background: activeCourse === i ? `${c.color}22` : "transparent",
+                    border: `2px solid \${activeCourse === i ? c.color : "rgba(255,255,255,0.1)"}`,
+                    background: activeCourse === i ? `\${c.color}22` : "transparent",
                     color: activeCourse === i ? "white" : "rgba(255,255,255,0.45)",
                     cursor: "pointer", fontFamily: "inherit", fontSize: 12, fontWeight: 700,
-                    boxShadow: activeCourse === i ? `0 0 12px ${c.color}50` : "none",
+                    boxShadow: activeCourse === i ? `0 0 12px \${c.color}50` : "none",
                     transition: "all 0.2s",
                   }}>
                   {c.emoji} {c.title}
@@ -1463,9 +1463,9 @@ export default function AdvancedCurriculum() {
           {[
             ["⏱ 所要時間", course.duration],
             ["📊 難易度", course.difficulty],
-            ["✅ 進捗", `${courseDone}/${course.steps.length} ステップ`],
+            ["✅ 進捗", `\${courseDone}/\${course.steps.length} ステップ`],
           ].map(([k, v]) => (
-            <div key={k} style={{ background: "white", border: `2px solid ${course.borderColor}`, borderRadius: 8, padding: "6px 14px", fontSize: 12 }}>
+            <div key={k} style={{ background: "white", border: `2px solid \${course.borderColor}`, borderRadius: 8, padding: "6px 14px", fontSize: 12 }}>
               <span style={{ color: "#94a3b8" }}>{k}: </span>
               <span style={{ fontWeight: 700, color: course.color }}>{v}</span>
             </div>
@@ -1480,7 +1480,7 @@ export default function AdvancedCurriculum() {
                 style={{
                   width: "100%", textAlign: "left", padding: "9px 11px", marginBottom: 5,
                   borderRadius: 9, fontFamily: "inherit",
-                  border: `2px solid ${i === activeStep ? course.color : isDone(activeCourse, i) ? "#22c55e" : "#e2e8f0"}`,
+                  border: `2px solid \${i === activeStep ? course.color : isDone(activeCourse, i) ? "#22c55e" : "#e2e8f0"}`,
                   background: i === activeStep ? course.lightColor : isDone(activeCourse, i) ? "#f0fdf4" : "white",
                   cursor: "pointer", transition: "all 0.2s",
                 }}>

@@ -556,7 +556,7 @@ export default function BastionCurriculum() {
 
   const method = METHODS[activeMethod];
   const step = method.steps[activeStep];
-  const stepKey = `${activeMethod}-${activeStep}`;
+  const stepKey = `\${activeMethod}-\${activeStep}`;
 
   const toggle = (key) => setCompleted(prev => {
     const next = new Set(prev);
@@ -584,10 +584,10 @@ export default function BastionCurriculum() {
         <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
           <div style={{
             width: 40, height: 40, borderRadius: 10,
-            background: `linear-gradient(135deg,${method.accentColor},#0f1e33)`,
+            background: `linear-gradient(135deg,\${method.accentColor},#0f1e33)`,
             display: "flex", alignItems: "center", justifyContent: "center",
             fontSize: 20, flexShrink: 0,
-            boxShadow: `0 0 18px ${method.glowColor}`,
+            boxShadow: `0 0 18px \${method.glowColor}`,
             transition: "box-shadow 0.4s",
           }}>🏰</div>
           <div>
@@ -610,8 +610,8 @@ export default function BastionCurriculum() {
             <div style={{ width: 80, height: 4, background: "#0f1e33", borderRadius: 4, overflow: "hidden" }}>
               <div style={{
                 height: "100%",
-                width: `${(completed.size / totalSteps) * 100}%`,
-                background: `linear-gradient(90deg,${method.accentColor},#60a5fa)`,
+                width: `\${(completed.size / totalSteps) * 100}%`,
+                background: `linear-gradient(90deg,\${method.accentColor},#60a5fa)`,
                 transition: "width 0.5s ease",
               }} />
             </div>
@@ -625,19 +625,19 @@ export default function BastionCurriculum() {
               style={{
                 display: "flex", alignItems: "center", gap: 8,
                 padding: "8px 14px", borderRadius: 8, whiteSpace: "nowrap",
-                border: `1px solid ${activeMethod === i ? m.accentColor : "#0f1e33"}`,
-                background: activeMethod === i ? `${m.accentColor}18` : "transparent",
+                border: `1px solid \${activeMethod === i ? m.accentColor : "#0f1e33"}`,
+                background: activeMethod === i ? `\${m.accentColor}18` : "transparent",
                 color: activeMethod === i ? "#e8f0ff" : "#4a6580",
                 cursor: "pointer", fontFamily: "inherit", fontSize: 12,
                 transition: "all 0.2s",
-                boxShadow: activeMethod === i ? `0 0 12px ${m.glowColor}` : "none",
+                boxShadow: activeMethod === i ? `0 0 12px \${m.glowColor}` : "none",
               }}>
               <span style={{ fontSize: 16 }}>{m.icon}</span>
               <span>{m.label}</span>
               <span style={{
                 fontSize: 9, padding: "2px 6px", borderRadius: 10,
-                background: `${m.badgeColor}22`, color: m.badgeColor,
-                border: `1px solid ${m.badgeColor}44`,
+                background: `\${m.badgeColor}22`, color: m.badgeColor,
+                border: `1px solid \${m.badgeColor}44`,
               }}>{m.badge}</span>
             </button>
           ))}
@@ -657,8 +657,8 @@ export default function BastionCurriculum() {
           {/* summary */}
           <div style={{
             padding: 12, borderRadius: 8,
-            background: `${method.accentColor}0e`,
-            border: `1px solid ${method.accentColor}30`,
+            background: `\${method.accentColor}0e`,
+            border: `1px solid \${method.accentColor}30`,
             fontSize: 11, color: "#8aaacb", lineHeight: 1.6,
           }}>
             {method.summary}
@@ -701,7 +701,7 @@ export default function BastionCurriculum() {
           {/* step list */}
           <div style={{ fontSize: 10, color: "#334866", letterSpacing: 2, marginBottom: 4 }}>STEPS</div>
           {method.steps.map((s, i) => {
-            const key = `${activeMethod}-${i}`;
+            const key = `\${activeMethod}-\${i}`;
             const isActive = i === activeStep;
             const isDone = completed.has(key);
             const ts = typeStyle[s.type];
@@ -710,19 +710,19 @@ export default function BastionCurriculum() {
                 style={{
                   width: "100%", textAlign: "left",
                   padding: "10px 10px", borderRadius: 7,
-                  border: `1px solid ${isActive ? method.accentColor : "#0f1e33"}`,
-                  background: isActive ? `${method.accentColor}12` : "transparent",
+                  border: `1px solid \${isActive ? method.accentColor : "#0f1e33"}`,
+                  background: isActive ? `\${method.accentColor}12` : "transparent",
                   cursor: "pointer", fontFamily: "inherit",
                   marginBottom: 4, transition: "all 0.15s",
                 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 5 }}>
                   <span style={{
                     fontSize: 9, padding: "2px 5px", borderRadius: 4,
-                    color: ts.color, background: `${ts.color}18`,
-                    border: `1px solid ${ts.color}40`,
+                    color: ts.color, background: `\${ts.color}18`,
+                    border: `1px solid \${ts.color}40`,
                   }}>{ts.label}</span>
                   <span style={{ fontSize: 11, color: isDone ? "#22c55e" : "#1e3a5f" }}>
-                    {isDone ? "✓" : `${i + 1}`}
+                    {isDone ? "✓" : `\${i + 1}`}
                   </span>
                 </div>
                 <div style={{
@@ -744,8 +744,8 @@ export default function BastionCurriculum() {
                 <span style={{
                   fontSize: 10, padding: "3px 8px", borderRadius: 5,
                   color: typeStyle[step.type].color,
-                  background: `${typeStyle[step.type].color}18`,
-                  border: `1px solid ${typeStyle[step.type].color}40`,
+                  background: `\${typeStyle[step.type].color}18`,
+                  border: `1px solid \${typeStyle[step.type].color}40`,
                 }}>{typeStyle[step.type].label}</span>
                 <span style={{ fontSize: 11, color: "#334866" }}>⏱ {step.duration}</span>
                 <span style={{ fontSize: 11, color: "#334866" }}>
@@ -760,7 +760,7 @@ export default function BastionCurriculum() {
             <button onClick={() => toggle(stepKey)}
               style={{
                 padding: "8px 16px", borderRadius: 8,
-                border: `1px solid ${completed.has(stepKey) ? "#22c55e" : "#0f1e33"}`,
+                border: `1px solid \${completed.has(stepKey) ? "#22c55e" : "#0f1e33"}`,
                 background: completed.has(stepKey) ? "#22c55e14" : "transparent",
                 color: completed.has(stepKey) ? "#22c55e" : "#334866",
                 cursor: "pointer", fontFamily: "inherit", fontSize: 12,
@@ -800,8 +800,8 @@ export default function BastionCurriculum() {
           <div style={{
             display: "flex", gap: 12, padding: "14px 16px",
             borderRadius: 8,
-            background: `${method.accentColor}0c`,
-            border: `1px solid ${method.accentColor}30`,
+            background: `\${method.accentColor}0c`,
+            border: `1px solid \${method.accentColor}30`,
             marginBottom: 24,
           }}>
             <span style={{ fontSize: 18, flexShrink: 0 }}>💡</span>
@@ -834,11 +834,11 @@ export default function BastionCurriculum() {
               disabled={activeMethod === METHODS.length - 1 && activeStep === method.steps.length - 1}
               style={{
                 padding: "9px 18px", borderRadius: 8,
-                border: `1px solid ${method.accentColor}`,
-                background: `${method.accentColor}14`,
+                border: `1px solid \${method.accentColor}`,
+                background: `\${method.accentColor}14`,
                 color: method.accentColor, cursor: "pointer",
                 fontFamily: "inherit", fontSize: 12,
-                boxShadow: `0 0 10px ${method.glowColor}`,
+                boxShadow: `0 0 10px \${method.glowColor}`,
                 opacity: (activeMethod === METHODS.length - 1 && activeStep === method.steps.length - 1) ? 0.3 : 1,
               }}>完了して次へ →</button>
           </div>
